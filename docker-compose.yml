@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+    app:
+        container_name: "${APP_NAME}.app"
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: 'php artisan serve --host=0.0.0.0'
+        volumes:
+            - .:/app
+        ports:
+            - 8008:8000
+        depends_on:
+            - db
+
+    db:
+        container_name: "${APP_NAME}.db"
+        image: postgres
+        volumes:
+            - ./dbdata:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: "${DB_DATABASE}"
+            POSTGRES_USER: "${DB_USERNAME}"
+            POSTGRES_PASSWORD: "${DB_PASSWORD}"
+        ports:
+            - 5439:5432
