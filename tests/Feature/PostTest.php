@@ -3,11 +3,14 @@
 namespace Tests\Feature;
 
 use App\Models\Post;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 
 class PostTest extends TestCase
 {
+
+    use RefreshDatabase;
 
     public function test_get_all_posts()
     {

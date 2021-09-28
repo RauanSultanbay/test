@@ -22,6 +22,7 @@ class PostResource extends JsonResource
             'main_image' => $this->getImageUrl(),
             'is_published' => $this->is_published,
             'published_date' => $this->published_date,
+            'created_at' => $this->created_at->format('Y-m-d')
         ];
     }
 }
